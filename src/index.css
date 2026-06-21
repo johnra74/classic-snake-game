@@ -72,6 +72,7 @@ body {
   display: grid;
   place-items: center;
   overflow: hidden;
+  touch-action: none;
 }
 
 .board {
