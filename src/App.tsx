@@ -58,8 +58,8 @@ export default function App({ store }: AppProps = {}) {
   return (
     <div className="app">
       <Hud level={state.level} score={state.score} foodLeft={state.food.length} />
-      <main className="stage">
-        <Board state={state} onTouchStart={swipe.onTouchStart} onTouchEnd={swipe.onTouchEnd} />
+      <main className="stage" onTouchStart={swipe.onTouchStart} onTouchEnd={swipe.onTouchEnd}>
+        <Board state={state} />
         {state.status === 'idle' && (
           <div className="overlay overlay--hint">
             <p>Press an arrow key or swipe to start</p>

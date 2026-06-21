@@ -5,8 +5,6 @@ import { Cell } from './Cell';
 
 interface BoardProps {
   state: GameState;
-  onTouchStart: (event: React.TouchEvent) => void;
-  onTouchEnd: (event: React.TouchEvent) => void;
 }
 
 /** Resolves the visual kind of the cell at index i, given precomputed lookups. */
@@ -25,7 +23,7 @@ function kindAt(
 }
 
 /** Renders the immutable grid as a CSS grid of pixel cells. */
-export function Board({ state, onTouchStart, onTouchEnd }: BoardProps) {
+export function Board({ state }: BoardProps) {
   const { board, snake, food } = state;
   const headKey = pointKey(snake[0]);
   const bodyKeys = occupiedKeys(snake.slice(1));
@@ -43,8 +41,6 @@ export function Board({ state, onTouchStart, onTouchEnd }: BoardProps) {
     <div
       className="board"
       data-testid="board"
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
       style={{
         gridTemplateColumns: `repeat(${board.cols}, ${CELL_PX}px)`,
         gridTemplateRows: `repeat(${board.rows}, ${CELL_PX}px)`,

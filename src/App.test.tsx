@@ -22,6 +22,23 @@ describe('App integration', () => {
     expect(screen.getByText(/press an arrow key or swipe/i)).toBeInTheDocument();
   });
 
+  it('starts the game from a swipe over the play area (incl. the idle hint)', () => {
+    render(<App store={new MemoryHighScoreStore()} />);
+    // The play area owns swipe handling, so a swipe works even while the
+    // start-hint overlay covers the board.
+    const stage = screen.getByText(/press an arrow key or swipe/i).closest('main')!;
+
+    act(() => {
+      fireEvent.touchStart(stage, { changedTouches: [{ clientX: 10, clientY: 10 }] });
+      fireEvent.touchEnd(stage, { changedTouches: [{ clientX: 80, clientY: 10 }] });
+    });
+
+    // Game has started: the hint is gone and the snake moves on the next tick.
+    expect(screen.queryByText(/press an arrow key/i)).not.toBeInTheDocument();
+    advance(160);
+    expect(screen.getByTestId('board')).toBeInTheDocument();
+  });
+
   it('starts on key press and runs to game over against the wall', () => {
     const store = new MemoryHighScoreStore();
     render(<App store={store} />);
