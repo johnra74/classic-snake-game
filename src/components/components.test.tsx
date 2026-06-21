@@ -58,23 +58,12 @@ describe('Board', () => {
   };
 
   it('renders one cell per grid square with correct kinds', () => {
-    render(<Board state={state} onTouchStart={() => {}} onTouchEnd={() => {}} />);
+    render(<Board state={state} />);
     expect(screen.getByTestId('board').children).toHaveLength(9);
     expect(screen.getAllByTestId('cell-head')).toHaveLength(1);
     expect(screen.getAllByTestId('cell-body')).toHaveLength(1);
     expect(screen.getAllByTestId('cell-food')).toHaveLength(1);
     expect(screen.getAllByTestId('cell-empty')).toHaveLength(6);
-  });
-
-  it('forwards touch events for swipe handling', () => {
-    const onTouchStart = vi.fn();
-    const onTouchEnd = vi.fn();
-    render(<Board state={state} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} />);
-    const board = screen.getByTestId('board');
-    fireEvent.touchStart(board, { changedTouches: [{ clientX: 0, clientY: 0 }] });
-    fireEvent.touchEnd(board, { changedTouches: [{ clientX: 1, clientY: 1 }] });
-    expect(onTouchStart).toHaveBeenCalled();
-    expect(onTouchEnd).toHaveBeenCalled();
   });
 });
 
