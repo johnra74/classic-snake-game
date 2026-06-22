@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" shape-rendering="crispEdges">
+  <!-- Background matches the app theme (--bg) -->
+  <rect width="512" height="512" fill="#0f0f1b"/>
+  <!-- Subtle inner board panel (--grid) -->
+  <rect x="48" y="48" width="416" height="416" rx="16" fill="#16213e"/>
+  <!-- Pixel grid uses 64px cells on a 512 canvas; padding keeps a safe maskable area -->
+  <!-- Snake body (--body) -->
+  <rect x="128" y="320" width="64" height="64" fill="#53d9a8"/>
+  <rect x="192" y="320" width="64" height="64" fill="#53d9a8"/>
+  <rect x="192" y="256" width="64" height="64" fill="#53d9a8"/>
+  <rect x="192" y="192" width="64" height="64" fill="#53d9a8"/>
+  <rect x="256" y="192" width="64" height="64" fill="#53d9a8"/>
+  <!-- Snake head (--head) -->
+  <rect x="320" y="192" width="64" height="64" fill="#e94560"/>
+  <!-- Eye -->
+  <rect x="352" y="208" width="16" height="16" fill="#0f0f1b"/>
+  <!-- Food pellet (--food) -->
+  <rect x="320" y="320" width="64" height="64" rx="8" fill="#ffd60a"/>
+</svg>
