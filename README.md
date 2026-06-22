@@ -17,6 +17,13 @@ A pixelated single-player snake / blockade game built with **pure React + TypeSc
 ## Board
 The board is sized once on load to maximize the viewport and is **locked** for the rest of the session (it never resizes mid-game).
 
+## Install as a mobile app (PWA)
+The game is a Progressive Web App, so it can be installed to a phone's home screen and played fully offline:
+- **Android (Chrome):** open the site, then menu → **Add to Home Screen / Install app**.
+- **iOS (Safari):** Share → **Add to Home Screen**.
+
+It launches standalone (no browser chrome) with its own icon and dark splash screen. The app shell is precached by a service worker (via `vite-plugin-pwa`), so after the first load it runs with no network. Installability requires serving over HTTPS (or `localhost`).
+
 ## Scripts
 ```bash
 npm install      # install dependencies
